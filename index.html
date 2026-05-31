@@ -2,416 +2,207 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Nutripure — USF Triathlon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --orange: #E8531A;
-    --orange-light: #FFF0EA;
-    --orange-mid: #F4834A;
-    --dark: #1A1A1A;
-    --mid: #4A4A4A;
-    --muted: #888;
-    --surface: #F7F5F2;
-    --white: #FFFFFF;
-    --border: #E8E4DE;
-    --green: #2D7A3A;
-    --green-light: #EAF4EC;
-    --amber: #B86A00;
-    --amber-light: #FFF8EA;
-    --gray-light: #F0EEE9;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--surface);
-    color: var(--dark);
-    max-width: 100%;
-    margin: 0 auto;
-    min-height: hidden;
-  }
+:root {
+  --orange:#E8531A; --orange-light:#FFF0EA; --orange-mid:#F4834A;
+  --dark:#1A1A1A; --mid:#4A4A4A; --muted:#888;
+  --surface:#F7F5F2; --white:#FFFFFF; --border:#E8E4DE;
+  --green:#2D7A3A; --green-light:#EAF4EC;
+  --amber:#B86A00; --amber-light:#FFF8EA;
+  --gray-light:#F0EEE9; --red:#C0392B; --red-light:#FDECEA;
+  --blue:#1A5FAB; --blue-light:#EBF2FB;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { width: 100%; overflow-x: hidden; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--surface);
+  color: var(--dark);
+  font-size: 14px;
+  line-height: 1.5;
+}
 
-  /* HEADER */
-  .hero {
-    background: var(--dark);
-    padding: 28px 20px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 160px; height: 160px;
-    border-radius: 50%;
-    background: var(--orange);
-    opacity: 0.15;
-  }
-  .hero-tag {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--orange-mid);
-    margin-bottom: 6px;
-  }
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: #FFFFFF;
-    line-height: 1.1;
-    margin-bottom: 8px;
-  }
-  .hero h1 span { color: var(--orange-mid); }
-  .hero-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.55);
-    line-height: 1.5;
-  }
-  .hero-pills {
-    display: flex;
-    gap: 8px;
-    margin-top: 14px;
-    flex-wrap: wrap;
-  }
-  .pill {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.7);
-  }
+/* HERO */
+.hero { background: var(--dark); padding: 24px 16px 20px; position: relative; overflow: hidden; }
+.hero::before { content:''; position:absolute; top:-40px; right:-40px; width:140px; height:140px; border-radius:50%; background:var(--orange); opacity:.15; }
+.hero-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--orange-mid); margin-bottom:5px; }
+.hero h1 { font-size:28px; font-weight:800; color:#fff; line-height:1.1; margin-bottom:6px; }
+.hero h1 span { color:var(--orange-mid); }
+.hero-sub { font-size:12px; color:rgba(255,255,255,.55); line-height:1.5; }
+.hero-pills { display:flex; gap:6px; margin-top:12px; flex-wrap:wrap; }
+.pill { font-size:10px; font-weight:600; padding:3px 9px; border-radius:20px; border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.7); }
 
-  /* NAV TABS */
-  .nav-wrap {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .nav-tabs {
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none;
-    padding: 0 12px;
-    gap: 0;
-  }
-  .nav-tabs::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    flex-shrink: 0;
-    font-family: 'Barlow', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 12px 14px;
-    border: none;
-    background: transparent;
-    color: var(--muted);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: color 0.2s, border-color 0.2s;
-    white-space: nowrap;
-  }
-  .tab-btn.active {
-    color: var(--orange);
-    border-bottom-color: var(--orange);
-  }
+/* NAV */
+.nav-wrap { background:var(--white); border-bottom:2px solid var(--border); position:sticky; top:0; z-index:200; }
+.nav-tabs { display:flex; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:0 8px; }
+.nav-tabs::-webkit-scrollbar { display:none; }
+.tab-btn {
+  flex-shrink:0; font-size:12px; font-weight:600; padding:11px 12px;
+  border:none; background:transparent; color:var(--muted); cursor:pointer;
+  border-bottom:3px solid transparent; margin-bottom:-2px;
+  white-space:nowrap; -webkit-appearance:none; outline:none;
+}
+.tab-btn.active { color:var(--orange); border-bottom-color:var(--orange); }
+.cbadge { display:inline-flex; align-items:center; justify-content:center; background:var(--orange); color:#fff; font-size:9px; font-weight:700; border-radius:50%; width:15px; height:15px; margin-left:3px; vertical-align:middle; }
 
-  /* SECTIONS */
-  .section { display: none; padding: 16px; }
-  .section.active { display: block; }
+/* SECTIONS */
+.section { display:none; padding:14px; }
+.section.active { display:block; }
 
-  /* SEARCH */
-  .search-wrap {
-    position: relative;
-    margin-bottom: 16px;
-  }
-  .search-wrap svg {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-  }
-  #searchInput {
-    width: 100%;
-    padding: 10px 12px 10px 36px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    background: var(--white);
-    color: var(--dark);
-    outline: none;
-  }
-  #searchInput:focus { border-color: var(--orange); }
+/* SEARCH */
+.search-box { position:relative; margin-bottom:14px; }
+.search-box input { width:100%; padding:10px 12px 10px 34px; border:1px solid var(--border); border-radius:8px; font-size:14px; background:var(--white); color:var(--dark); outline:none; -webkit-appearance:none; }
+.search-box input:focus { border-color:var(--orange); }
+.search-icon { position:absolute; left:10px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:14px; pointer-events:none; }
 
-  /* CATEGORY HEADER */
-  .cat-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 20px 0 10px;
-  }
-  .cat-header:first-child { margin-top: 0; }
-  .cat-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--orange);
-    flex-shrink: 0;
-  }
-  .cat-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--mid);
-    flex: 1;
-  }
-  .cat-sub {
-    font-size: 11px;
-    color: var(--muted);
-    font-weight: 500;
-  }
+/* CAT HEADER */
+.cat-header { display:flex; align-items:center; gap:8px; margin:18px 0 8px; }
+.cat-dot { width:7px; height:7px; border-radius:50%; background:var(--orange); flex-shrink:0; }
+.cat-title { font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--mid); flex:1; }
+.cat-sub { font-size:10px; color:var(--muted); }
 
-  /* PRODUCT CARD */
-  .product-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    transition: border-color 0.15s;
-  }
-  .product-card:hover, .product-card:active { border-color: var(--orange-mid); }
-  .product-card.expanded { border-color: var(--orange); }
-  .product-icon {
-    width: 40px; height: 40px;
-    border-radius: 8px;
-    background: var(--orange-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 18px;
-  }
-  .product-main { flex: 1; min-width: 0; }
-  .product-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--dark);
-    line-height: 1.3;
-    margin-bottom: 2px;
-  }
-  .product-format {
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 6px;
-  }
-  .product-footer {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .product-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--orange);
-  }
-  .badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 7px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-  }
-  .badge-green { background: var(--green-light); color: var(--green); }
-  .badge-amber { background: var(--amber-light); color: var(--amber); }
-  .badge-gray { background: var(--gray-light); color: var(--mid); }
-  .expand-arrow {
-    color: var(--muted);
-    font-size: 16px;
-    transition: transform 0.2s;
-    flex-shrink: 0;
-    align-self: center;
-  }
-  .product-card.expanded .expand-arrow { transform: rotate(180deg); }
-  .product-detail {
-    display: none;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--mid);
-    line-height: 1.6;
-  }
-  .product-card.expanded .product-detail { display: block; }
+/* PRODUCT CARD */
+.product-card {
+  background:var(--white); border:1.5px solid var(--border); border-radius:10px;
+  padding:12px; margin-bottom:8px; cursor:pointer;
+  transition:border-color .15s;
+}
+.product-card.in-cart { border-color:var(--green); background:#FAFFF9; }
+.product-top { display:flex; align-items:flex-start; gap:10px; }
+.product-icon { width:38px; height:38px; border-radius:8px; background:var(--orange-light); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:17px; }
+.product-main { flex:1; min-width:0; }
+.product-name { font-size:13px; font-weight:600; color:var(--dark); line-height:1.3; margin-bottom:2px; }
+.product-format { font-size:11px; color:var(--muted); margin-bottom:5px; }
+.product-footer { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+.product-price { font-size:15px; font-weight:700; color:var(--orange); }
+.badge { font-size:9px; font-weight:700; padding:2px 6px; border-radius:20px; }
+.badge-green { background:var(--green-light); color:var(--green); }
+.badge-amber { background:var(--amber-light); color:var(--amber); }
+.badge-gray { background:var(--gray-light); color:var(--mid); }
+.expand-icon { color:var(--muted); font-size:14px; flex-shrink:0; align-self:center; transition:transform .2s; }
+.product-card.expanded .expand-icon { transform:rotate(180deg); }
 
-  /* GUIDE SECTION */
-  .guide-block {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    margin-bottom: 10px;
-    overflow: hidden;
-  }
-  .guide-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 14px;
-    cursor: pointer;
-  }
-  .guide-emoji { font-size: 20px; flex-shrink: 0; }
-  .guide-title { font-size: 14px; font-weight: 600; flex: 1; }
-  .guide-arrow { color: var(--muted); font-size: 16px; transition: transform 0.2s; }
-  .guide-block.open .guide-arrow { transform: rotate(180deg); }
-  .guide-body {
-    display: none;
-    padding: 0 14px 14px;
-    border-top: 1px solid var(--border);
-  }
-  .guide-block.open .guide-body { display: block; }
-  .guide-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-  }
-  .guide-row:last-child { border-bottom: none; }
-  .guide-label {
-    font-weight: 600;
-    color: var(--dark);
-    min-width: 90px;
-    flex-shrink: 0;
-    line-height: 1.4;
-  }
-  .guide-val { color: var(--mid); line-height: 1.5; }
+/* DETAIL */
+.product-detail { display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:12px; color:var(--mid); line-height:1.6; }
+.product-card.expanded .product-detail { display:block; }
+.incart-tag { display:none; font-size:11px; color:var(--green); font-weight:600; margin-top:5px; }
+.product-card.in-cart .incart-tag { display:block; }
 
-  /* RULES SECTION */
-  .rule-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 10px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-  }
-  .rule-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--orange);
-    line-height: 1;
-    min-width: 24px;
-    flex-shrink: 0;
-  }
-  .rule-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
-  .rule-body { font-size: 12px; color: var(--mid); line-height: 1.5; }
+/* CART CONTROLS */
+.cart-ctrl { display:flex; align-items:center; gap:8px; margin-top:10px; }
+.qty-btn { width:32px; height:32px; border-radius:6px; border:1px solid var(--border); background:var(--surface); font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; -webkit-appearance:none; }
+.qty-num { font-size:15px; font-weight:700; min-width:22px; text-align:center; }
+.add-btn { flex:1; padding:8px; border-radius:8px; border:none; background:var(--orange); color:#fff; font-size:13px; font-weight:600; cursor:pointer; -webkit-appearance:none; }
+.add-btn.added { background:var(--green); }
 
-  /* PRIORITY SECTION */
-  .priority-group { margin-bottom: 16px; }
-  .priority-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-  }
-  .priority-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .dot-green { background: #2D7A3A; }
-  .dot-amber { background: #B86A00; }
-  .dot-gray { background: #888; }
-  .priority-name { font-size: 13px; font-weight: 600; }
-  .priority-desc { font-size: 11px; color: var(--muted); }
-  .priority-tags { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 18px; }
-  .ptag {
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--mid);
-    background: var(--white);
-  }
+/* GUIDE */
+.guide-block { background:var(--white); border:1px solid var(--border); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+.guide-head { display:flex; align-items:center; gap:10px; padding:13px; cursor:pointer; }
+.guide-emoji { font-size:18px; flex-shrink:0; }
+.guide-title-txt { font-size:13px; font-weight:600; flex:1; }
+.guide-arr { color:var(--muted); font-size:14px; transition:transform .2s; flex-shrink:0; }
+.guide-block.open .guide-arr { transform:rotate(180deg); }
+.guide-body { display:none; border-top:1px solid var(--border); padding:0 13px 12px; }
+.guide-block.open .guide-body { display:block; }
+.guide-row { display:flex; gap:10px; padding:9px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.guide-row:last-child { border-bottom:none; }
+.guide-lbl { font-weight:600; color:var(--dark); min-width:80px; flex-shrink:0; }
+.guide-val { color:var(--mid); flex:1; }
 
-  /* INFO BANNER */
-  .info-banner {
-    background: var(--orange-light);
-    border: 1px solid #F4C3A8;
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 16px;
-    font-size: 12px;
-    color: #7A3010;
-    line-height: 1.5;
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-  }
-  .info-banner svg { flex-shrink: 0; margin-top: 1px; }
+/* RULES */
+.rule-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:13px; margin-bottom:9px; display:flex; gap:10px; }
+.rule-num { font-size:22px; font-weight:800; color:var(--orange); line-height:1; min-width:22px; flex-shrink:0; }
+.rule-title { font-size:13px; font-weight:600; margin-bottom:3px; }
+.rule-body { font-size:12px; color:var(--mid); line-height:1.5; }
 
-  /* COMMANDE SECTION */
-  .cta-box {
-    background: var(--dark);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-    color: white;
-  }
-  .cta-box h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .cta-box p { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; margin-bottom: 14px; }
-  .step-list { list-style: none; }
-  .step-list li {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    font-size: 13px;
-    color: rgba(255,255,255,0.8);
-  }
-  .step-list li:last-child { border-bottom: none; }
-  .step-n {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--orange-mid);
-    line-height: 1.2;
-    min-width: 20px;
-  }
+/* PRIORITY */
+.priority-group { margin-bottom:14px; }
+.priority-label { display:flex; align-items:flex-start; gap:8px; margin-bottom:7px; }
+.p-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; margin-top:2px; }
+.dot-g { background:#2D7A3A; } .dot-a { background:#B86A00; } .dot-gr { background:#888; }
+.p-name { font-size:13px; font-weight:600; }
+.p-desc { font-size:11px; color:var(--muted); }
+.ptags { display:flex; flex-wrap:wrap; gap:5px; padding-left:18px; }
+.ptag { font-size:11px; padding:3px 9px; border-radius:20px; border:1px solid var(--border); color:var(--mid); background:var(--white); }
 
-  /* EMPTY STATE */
-  #emptyState {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--muted);
-    font-size: 14px;
-  }
-  #emptyState svg { margin-bottom: 12px; opacity: 0.4; }
+/* INFO BOX */
+.info-box { background:var(--orange-light); border:1px solid #F4C3A8; border-radius:9px; padding:11px 13px; margin-bottom:14px; font-size:12px; color:#7A3010; line-height:1.5; }
+.tip-box { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:14px; margin-top:8px; }
+
+/* COMMANDE */
+.id-card { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:14px; margin-bottom:12px; }
+.card-title { font-size:13px; font-weight:600; margin-bottom:11px; }
+.field { margin-bottom:10px; }
+.field label { display:block; font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+.field input { width:100%; padding:9px 11px; border:1.5px solid var(--border); border-radius:7px; font-size:14px; color:var(--dark); background:var(--white); outline:none; -webkit-appearance:none; }
+.field input:focus { border-color:var(--orange); }
+.field.err input { border-color:var(--red); }
+.ferr { font-size:11px; color:var(--red); margin-top:3px; }
+
+/* CART */
+.cart-empty { text-align:center; padding:28px 16px; color:var(--muted); font-size:13px; }
+.cart-row { display:flex; align-items:center; gap:8px; padding:9px 0; border-bottom:1px solid var(--border); }
+.cart-row:last-of-type { border-bottom:none; }
+.cart-ico { font-size:18px; flex-shrink:0; }
+.cart-info { flex:1; min-width:0; }
+.cart-name { font-size:12px; font-weight:500; line-height:1.3; }
+.cart-fmt { font-size:10px; color:var(--muted); }
+.cqty-ctrl { display:flex; align-items:center; gap:5px; }
+.cqty-btn { width:26px; height:26px; border-radius:5px; border:1px solid var(--border); background:var(--surface); font-size:16px; cursor:pointer; display:flex; align-items:center; justify-content:center; flex-shrink:0; -webkit-appearance:none; }
+.cqty-val { font-size:13px; font-weight:700; min-width:16px; text-align:center; }
+.cart-price { font-size:14px; font-weight:700; color:var(--orange); min-width:50px; text-align:right; }
+.cart-total { display:flex; justify-content:space-between; align-items:center; padding:11px 0 3px; font-weight:600; font-size:13px; }
+.cart-total-price { font-size:20px; font-weight:800; color:var(--orange); }
+.cart-note { background:var(--blue-light); border:1px solid #B8D2F0; border-radius:8px; padding:10px 12px; font-size:12px; color:#1A3F6F; line-height:1.5; margin-bottom:12px; }
+
+/* BUTTONS */
+.main-btn { width:100%; padding:14px; border-radius:10px; border:none; background:var(--orange); color:#fff; font-size:16px; font-weight:700; cursor:pointer; -webkit-appearance:none; }
+.main-btn:disabled { background:var(--muted); }
+.main-btn.secondary { background:var(--mid); }
+
+/* SUCCESS */
+.success-box { background:var(--green-light); border:1px solid #A8D8B0; border-radius:12px; padding:22px 16px; text-align:center; margin-bottom:14px; }
+.success-ico { font-size:38px; margin-bottom:7px; }
+.success-title { font-size:20px; font-weight:800; color:var(--green); margin-bottom:5px; }
+.success-sub { font-size:13px; color:#2D5A35; line-height:1.5; }
+
+/* ADMIN */
+.admin-gate { background:var(--white); border:1px solid var(--border); border-radius:10px; padding:16px; margin-bottom:14px; }
+.admin-stats { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px; }
+.stat-card { background:var(--surface); border-radius:8px; padding:12px; text-align:center; }
+.stat-num { font-size:26px; font-weight:800; color:var(--orange); }
+.stat-label { font-size:11px; color:var(--muted); margin-top:2px; }
+.export-btn { width:100%; padding:11px; border-radius:8px; border:1px solid var(--border); background:var(--white); font-size:13px; font-weight:600; cursor:pointer; margin-bottom:8px; -webkit-appearance:none; }
+
+.order-card { background:var(--white); border:1px solid var(--border); border-radius:10px; margin-bottom:9px; overflow:hidden; }
+.order-head { display:flex; align-items:center; gap:9px; padding:12px 13px; cursor:pointer; }
+.order-avatar { width:34px; height:34px; border-radius:50%; background:var(--orange-light); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--orange); flex-shrink:0; }
+.order-meta { flex:1; min-width:0; }
+.order-name { font-size:13px; font-weight:600; }
+.order-info { font-size:10px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.order-right { text-align:right; flex-shrink:0; }
+.order-total { font-size:15px; font-weight:700; color:var(--orange); }
+.order-status { font-size:10px; color:var(--muted); display:flex; align-items:center; gap:4px; justify-content:flex-end; }
+.sdot { width:7px; height:7px; border-radius:50%; }
+.sdot-p { background:#F0AD4E; } .sdot-d { background:var(--green); }
+.order-body { display:none; border-top:1px solid var(--border); padding:11px 13px; }
+.order-card.open .order-body { display:block; }
+.order-prod { display:flex; justify-content:space-between; padding:5px 0; border-bottom:1px solid var(--border); font-size:12px; }
+.order-prod:last-of-type { border-bottom:none; }
+.order-prod-n { flex:1; color:var(--dark); }
+.order-prod-q { color:var(--mid); font-weight:600; margin:0 8px; }
+.order-prod-p { font-weight:600; color:var(--orange); }
+.order-acts { display:flex; gap:7px; margin-top:10px; }
+.act-btn { flex:1; padding:8px; border-radius:7px; font-size:12px; font-weight:600; cursor:pointer; -webkit-appearance:none; }
+.act-done { background:var(--green); color:#fff; border:1px solid var(--green); }
+.act-del { background:var(--red-light); color:var(--red); border:1px solid #F4B8B8; }
+
+/* EMPTY */
+.empty-state { display:none; text-align:center; padding:36px 16px; color:var(--muted); font-size:13px; }
+
+.admin-badge { display:inline-block; background:var(--blue); color:#fff; font-size:9px; font-weight:700; border-radius:3px; padding:1px 4px; margin-left:3px; vertical-align:middle; }
 </style>
 </head>
 <body>
@@ -419,922 +210,646 @@
 <div class="hero">
   <div class="hero-tag">Club USF Triathlon · Catalogue officiel</div>
   <h1>Nutripure<br><span>Tarifs Club</span></h1>
-  <div class="hero-sub">Produits sélectionnés par votre club au tarif partenaire.<br>Saison 2024–2025.</div>
+  <div class="hero-sub">Produits sélectionnés au tarif partenaire — Saison 2025</div>
   <div class="hero-pills">
     <div class="pill">🇫🇷 Marque française</div>
     <div class="pill">100% naturel</div>
-    <div class="pill">Label AFNOR Sport</div>
+    <div class="pill">AFNOR Sport</div>
   </div>
 </div>
 
 <div class="nav-wrap">
-  <div class="nav-tabs">
-    <button class="tab-btn active" onclick="showTab('catalogue')">Catalogue</button>
-    <button class="tab-btn" onclick="showTab('guide')">Guide usage</button>
-    <button class="tab-btn" onclick="showTab('priorites')">Priorités</button>
-    <button class="tab-btn" onclick="showTab('regles')">Règles d'or</button>
-    <button class="tab-btn" onclick="showTab('commande')">Commander</button>
+  <div class="nav-tabs" id="navTabs">
+    <button class="tab-btn active" data-tab="catalogue">Catalogue</button>
+    <button class="tab-btn" data-tab="commande">🛒 Panier <span class="cbadge" id="cartBadge" style="display:none"></span></button>
+    <button class="tab-btn" data-tab="guide">Guide</button>
+    <button class="tab-btn" data-tab="priorites">Priorités</button>
+    <button class="tab-btn" data-tab="regles">Règles</button>
+    <button class="tab-btn" data-tab="admin">Admin <span class="admin-badge">CLUB</span></button>
   </div>
 </div>
 
 <!-- CATALOGUE -->
 <div class="section active" id="tab-catalogue">
-
-  <div class="search-wrap">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" id="searchInput" placeholder="Rechercher un produit..." oninput="filterProducts(this.value)">
+  <div class="search-box">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Rechercher un produit...">
   </div>
-
-  <div id="productList">
-
-    <div class="cat-header" data-cat="hydratation">
-      <div class="cat-dot"></div>
-      <div class="cat-title">Hydratation & Effort</div>
-      <div class="cat-sub">Performance</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="pure electrolytes sachets électrolytes hydratation citron">
-      <div class="product-icon">💧</div>
-      <div class="product-main">
-        <div class="product-name">Pure Electrolytes (Sachets)</div>
-        <div class="product-format">Boîte 15 sachets unidoses · Goût citron</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Électrolytes en sachets unidoses à emporter partout. Goût citron sans édulcorants controversés. Idéal pour les séances courtes et les déplacements compétition.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="pure electrolytes boisson sport poudre électrolytes entraînement">
-      <div class="product-icon">💧</div>
-      <div class="product-main">
-        <div class="product-name">Pure Electrolytes Boisson sport</div>
-        <div class="product-format">Pot poudre · 300 g</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Format poudre économique pour doser ses électrolytes à l'entraînement. Version sans sucres, à base de citrates, idéale pour les entraînements intensifs ou par forte chaleur.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="maltodextrine bio glucides énergie vélo">
-      <div class="product-icon">⚡</div>
-      <div class="product-main">
-        <div class="product-name">Maltodextrine Bio 1 kg</div>
-        <div class="product-format">Sachet poudre · 1 000 g</div>
-        <div class="product-footer">
-          <div class="product-price">9,54 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Recharge glucidique pure, issue de l'agriculture biologique. À mélanger dans les bidons pour les sorties longues (60–80 g pour 3h de vélo).</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="maltodextrine grand format saison">
-      <div class="product-icon">⚡</div>
-      <div class="product-main">
-        <div class="product-name">Maltodextrine Grand Format</div>
-        <div class="product-format">Sachet poudre · 4 000 g</div>
-        <div class="product-footer">
-          <div class="product-price">26,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Format 4 kg pour tenir toute la saison. Économique pour les athlètes à fort volume d'entraînement vélo ou préparant un long distance.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="gel long distance énergie course glucides solidcarbs">
-      <div class="product-icon">🏃</div>
-      <div class="product-main">
-        <div class="product-name">Gel Long Distance (étui 6 gels)</div>
-        <div class="product-format">Étui de 6 gels · Technologie SolidCarbs™</div>
-        <div class="product-footer">
-          <div class="product-price">17,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">30 g de glucides par gel (glucose + fructose ratio 2:1) pour une absorption optimale. Technologie SolidCarbs™ : texture dense non liquide, libération progressive, excellent confort digestif. Goût neutre sans édulcorant pour éviter l'écœurement sur les longues distances.
-        <br><br><strong>Protocole :</strong> 1 gel toutes les 30–45 min, jusqu'à 2/heure.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="gel long distance pack 3 compétition">
-      <div class="product-icon">🏃</div>
-      <div class="product-main">
-        <div class="product-name">Gel Long Distance × 3 étuis</div>
-        <div class="product-format">Pack 3 étuis · 18 gels au total</div>
-        <div class="product-footer">
-          <div class="product-price">53,82 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Pack économique pour préparer une compétition longue (Half, Ironman). Idéal pour ne pas tomber en rupture de stock en période de compétition.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="caféine naturelle stimulant vigilance départ">
-      <div class="product-icon">☕</div>
-      <div class="product-main">
-        <div class="product-name">Caféine Naturelle</div>
-        <div class="product-format">Pilulier · 60 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Gélules de caféine naturelle pour stimuler la vigilance avant le départ. À tester impérativement à l'entraînement avant une compétition.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="taurine acide aminé endurance">
-      <div class="product-icon">🔋</div>
-      <div class="product-main">
-        <div class="product-name">Taurine</div>
-        <div class="product-format">Pilulier · 90 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Acide aminé pour accompagner les efforts d'endurance. Souvent associé au magnésium pour optimiser son absorption.</div>
-    </div>
-
-    <div class="cat-header" data-cat="nutrition">
-      <div class="cat-dot"></div>
-      <div class="cat-title">Nutrition Terrain & Collations</div>
-      <div class="cat-sub">Performance</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="barres énergétiques vélo collation digeste">
-      <div class="product-icon">🍫</div>
-      <div class="product-main">
-        <div class="product-name">Barres Énergétiques Long Distance</div>
-        <div class="product-format">Boîte · 12 barres · 30 g glucides/barre</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">30 g de glucides par barre, 70% de fruits, texture moelleuse. Encas solide et digeste pour couper la faim sur le vélo. Compatible avec la stratégie gel + barre sur longue distance.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="raw barre bio collation poche maillot">
-      <div class="product-icon">🌿</div>
-      <div class="product-main">
-        <div class="product-name">Raw Barre Bio</div>
-        <div class="product-format">Unité · 1 barre 40 g</div>
-        <div class="product-footer">
-          <div class="product-price">1,50 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Barre crue biologique à glisser dans une poche de maillot. Parfaite pour les petites faims à l'entraînement.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="pancakes protéinés petit-déjeuner avant-course digestibilité">
-      <div class="product-icon">🥞</div>
-      <div class="product-main">
-        <div class="product-name">Pancakes Protéinés</div>
-        <div class="product-format">Sachet poudre · 500 g</div>
-        <div class="product-footer">
-          <div class="product-price">11,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Préparation en poudre pour un petit-déjeuner d'avant-course haute digestibilité. Choix idéal le matin de la compétition pour charger sans risquer de troubles digestifs.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="granola protéiné céréales petit-déjeuner quotidien">
-      <div class="product-icon">🥣</div>
-      <div class="product-main">
-        <div class="product-name">Granola Protéiné</div>
-        <div class="product-format">Sachet · 400 g</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Céréales croustillantes enrichies en protéines pour le quotidien. Idéal au petit-déjeuner des semaines de gros volume d'entraînement.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="purée amandes lipides oléagineux">
-      <div class="product-icon">🥜</div>
-      <div class="product-main">
-        <div class="product-name">Purée d'Amandes</div>
-        <div class="product-format">Pot verre · 500 g</div>
-        <div class="product-footer">
-          <div class="product-price">11,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Oléagineux pur pour un apport en bons lipides durant les grosses semaines. Associer aux pancakes ou au granola pour une recharge calorique saine.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="beurre cacahuète calories lipides économique">
-      <div class="product-icon">🥜</div>
-      <div class="product-main">
-        <div class="product-name">Beurre de Cacahuète</div>
-        <div class="product-format">Pot verre · 500 g</div>
-        <div class="product-footer">
-          <div class="product-price">7,74 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Source de calories saines et économiques. Solution idéale pour une recharge calorique lorsque le volume s'intensifie.</div>
-    </div>
-
-    <div class="cat-header" data-cat="recup">
-      <div class="cat-dot"></div>
-      <div class="cat-title">Récupération Musculaire</div>
-      <div class="cat-sub">Performance</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="whey chocolat protéine récupération musculaire">
-      <div class="product-icon">🍫</div>
-      <div class="product-main">
-        <div class="product-name">Whey Chocolat</div>
-        <div class="product-format">Pot poudre · 750 g · Goût chocolat</div>
-        <div class="product-footer">
-          <div class="product-price">23,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Protéine native aromatisée chocolat pour réparer les fibres musculaires post-séance. À consommer dans les 30 min après l'effort pour maximiser la synthèse protéique.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="whey isolate native protéine pure assimilation rapide">
-      <div class="product-icon">💪</div>
-      <div class="product-main">
-        <div class="product-name">Whey Isolate Native</div>
-        <div class="product-format">Pot poudre · 750 g</div>
-        <div class="product-footer">
-          <div class="product-price">26,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Isolat de protéine de haute pureté sans lécithine, à assimilation ultra-rapide. Idéal pour les athlètes sensibles aux additifs ou intolérants au lactose.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="recovery drink récupération glucides protéines">
-      <div class="product-icon">🥤</div>
-      <div class="product-main">
-        <div class="product-name">Recovery Drink</div>
-        <div class="product-format">Pot poudre · 800 g</div>
-        <div class="product-footer">
-          <div class="product-price">17,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Ration de récupération complète combinant protéines et glucides. À consommer dans la fenêtre de récupération (30 min post-effort). Pratique lors des compétitions pour une récupération immédiate.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="créatine poudre force récupération">
-      <div class="product-icon">⚗️</div>
-      <div class="product-main">
-        <div class="product-name">Créatine Poudre</div>
-        <div class="product-format">Pot poudre · 300 g · Creapure®</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Créatine pure Creapure® pour la force et la récupération. Bénéfice prouvé pour les efforts intenses. Moins pertinent pour le pur endurance, utile en préparation hivernale ou musculation.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="créatine gélules déplacement pratique">
-      <div class="product-icon">💊</div>
-      <div class="product-main">
-        <div class="product-name">Créatine Gélules</div>
-        <div class="product-format">Pilulier · 120 gélules · Creapure®</div>
-        <div class="product-footer">
-          <div class="product-price">11,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Créatine en gélules, plus pratique en déplacement et compétition. Même efficacité que la version poudre.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="caséine protéine lente nuit sommeil">
-      <div class="product-icon">🌙</div>
-      <div class="product-main">
-        <div class="product-name">Caséine Micellaire</div>
-        <div class="product-format">Pot poudre · 750 g</div>
-        <div class="product-footer">
-          <div class="product-price">20,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Protéine à diffusion lente à consommer le soir avant le coucher. Maintient la synthèse protéique pendant la nuit, essentiel lors des semaines de gros volume.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="peptopro hydrolysat récupération immédiate">
-      <div class="product-icon">🔬</div>
-      <div class="product-main">
-        <div class="product-name">PeptoPro</div>
-        <div class="product-format">Pot poudre · 250 g · Hydrolysat de caséine</div>
-        <div class="product-footer">
-          <div class="product-price">23,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Hydrolysat de caséine haut de gamme pour la récupération immédiate per- ou post-effort. Assimilation très rapide, idéal pour les blocs d'entraînement consécutifs.</div>
-    </div>
-
-    <div class="cat-header" data-cat="tendons">
-      <div class="cat-dot"></div>
-      <div class="cat-title">Tendons & Prévention Blessures</div>
-      <div class="cat-sub">Santé</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="collagène peptan 4kg seau usage intensif">
-      <div class="product-icon">🦴</div>
-      <div class="product-main">
-        <div class="product-name">Collagène Peptan 4 kg</div>
-        <div class="product-format">Sachet poudre · 4 000 g · Format saisonnier</div>
-        <div class="product-footer">
-          <div class="product-price">83,94 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Format économique pour les athlètes intensifs ou usage collectif du club. Le collagène Peptan® est une référence brevetée pour la santé des tendons et des articulations. À prendre le matin à jeun ou avant l'entraînement.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="collagène peptan chocolat routine matinale">
-      <div class="product-icon">🍫</div>
-      <div class="product-main">
-        <div class="product-name">Collagène Peptan Chocolat</div>
-        <div class="product-format">Pot poudre · 300 g</div>
-        <div class="product-footer">
-          <div class="product-price">22,74 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Collagène Peptan® aromatisé au chocolat pour faciliter la routine matinale. Même efficacité que la version neutre, plus agréable à consommer au quotidien.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="collagène marin sauvage tissus">
-      <div class="product-icon">🐟</div>
-      <div class="product-main">
-        <div class="product-name">Collagène Marin Sauvage</div>
-        <div class="product-format">Pot poudre · 300 g</div>
-        <div class="product-footer">
-          <div class="product-price">22,74 €</div>
-          <div class="badge badge-green">INDISPENSABLE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Collagène issu de sources marines sauvages pour le soutien des tissus conjonctifs. Alternative pour ceux qui privilégient une source marine plutôt que bovine.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="curcumine curcuma anti-inflammatoire articulations">
-      <div class="product-icon">🌿</div>
-      <div class="product-main">
-        <div class="product-name">Curcumine Cavacurmin®</div>
-        <div class="product-format">Pilulier · 60 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">20,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Extrait de curcuma hautement assimilable (forme Cavacurmin® brevetée) contre les douleurs articulaires. Efficace sur les phases de grosse charge ou lors de douleurs tendinopathiques.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="boswellia articulations inconfort">
-      <div class="product-icon">🌱</div>
-      <div class="product-main">
-        <div class="product-name">Boswellia</div>
-        <div class="product-format">Pilulier · 60 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Extrait de résine végétale pour soulager l'inconfort des articulations sollicitées. Souvent associé à la curcumine pour un effet synergique anti-inflammatoire naturel.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="MSM soufre tissus conjonctifs">
-      <div class="product-icon">🔩</div>
-      <div class="product-main">
-        <div class="product-name">MSM</div>
-        <div class="product-format">Pilulier · 120 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">11,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Méthylsulfonylméthane — composé soufré naturel pour le bien-être des tissus conjonctifs. Complémentaire du collagène dans un protocole prévention blessures.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="oméga-3 EPAX anti-inflammatoire capsules">
-      <div class="product-icon">🐟</div>
-      <div class="product-main">
-        <div class="product-name">Oméga-3 EPAX®</div>
-        <div class="product-format">Pilulier · 120 capsules</div>
-        <div class="product-footer">
-          <div class="product-price">15,54 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Huile de poisson certifiée EPAX® pour réguler l'inflammation chronique liée à l'entraînement. Bénéfices cardiovasculaires, articulaires et cognitifs. Recommandé en cure de fond toute l'année.</div>
-    </div>
-
-    <div class="cat-header" data-cat="sommeil">
-      <div class="cat-dot"></div>
-      <div class="cat-title">Sommeil, Fatigue & Immunité</div>
-      <div class="cat-sub">Santé</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="magnésium biodisponible fatigue nerveuse fond">
-      <div class="product-icon">😴</div>
-      <div class="product-main">
-        <div class="product-name">Magnésium Biodisponible</div>
-        <div class="product-format">Pilulier · 180 gélules · Format 3 mois</div>
-        <div class="product-footer">
-          <div class="product-price">23,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Format économique pour une cure de fond contre la fatigue nerveuse. Bisglycinate hautement assimilable, sans effet laxatif sur le transit.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="magnésium taurine B6 muscles nuit stress">
-      <div class="product-icon">😴</div>
-      <div class="product-main">
-        <div class="product-name">Magnésium Taurine B6</div>
-        <div class="product-format">Pilulier · 90 gélules · 1 mois</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Complexe bisglycinate + taurine + vitamine B6 pour une absorption optimale. Détend les muscles avant la nuit, réduit le stress et soutient le système nerveux. ⚠️ Tarif club réduit — prix public : ~40 €.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="magnésium taurine B6 pack double cure">
-      <div class="product-icon">😴</div>
-      <div class="product-main">
-        <div class="product-name">Magnésium Taurine B6 × 2</div>
-        <div class="product-format">Lot 2 piluliers · 180 gélules · 2 mois</div>
-        <div class="product-footer">
-          <div class="product-price">47,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Pack double pour assurer la continuité de la cure de magnésium. Recommandé pour les athlètes à fort volume sur 2+ mois consécutifs.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="ashwagandha adaptogène stress fatigue physique">
-      <div class="product-icon">🌿</div>
-      <div class="product-main">
-        <div class="product-name">Ashwagandha</div>
-        <div class="product-format">Pilulier · 60 gélules · KSM-66 Bio</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Plante adaptogène aidant à réguler le stress et la fatigue physique. Particulièrement utile en période de surcharge ou de compétition rapprochée. Forme KSM-66® biologique.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="rhodiola résistance effort adaptogène">
-      <div class="product-icon">🌸</div>
-      <div class="product-main">
-        <div class="product-name">Rhodiola</div>
-        <div class="product-format">Pilulier · 60 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-gray">OPTIONNEL</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Adaptogène pour améliorer la résistance de l'organisme face à l'effort et réduire la fatigue mentale. Complémentaire de l'ashwagandha en période intense.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="vitamine D3 K2 immunité os hiver">
-      <div class="product-icon">☀️</div>
-      <div class="product-main">
-        <div class="product-name">Vitamine D3 K2</div>
-        <div class="product-format">Flacon compte-gouttes · 15 ml</div>
-        <div class="product-footer">
-          <div class="product-price">11,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Solution liquide concentrée pour soutenir l'immunité et la santé osseuse, particulièrement en automne-hiver. La K2 favorise la fixation du calcium. Incontournable pour tous les sportifs d'endurance.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="multivitamines vitamines minéraux pertes sportif">
-      <div class="product-icon">💊</div>
-      <div class="product-main">
-        <div class="product-name">Multivitamines</div>
-        <div class="product-format">Pilulier · 90 gélules · 3 mois</div>
-        <div class="product-footer">
-          <div class="product-price">20,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Concentré complet de vitamines et minéraux pour compenser les pertes accrues du sportif d'endurance. Utile en base de fond ou pendant les périodes de préparation intense.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="zinc bisglycinate immunité oligo-élément">
-      <div class="product-icon">🛡️</div>
-      <div class="product-main">
-        <div class="product-name">Zinc Bisglycinate</div>
-        <div class="product-format">Pilulier · 120 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">8,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Oligo-élément indispensable à la protection immunitaire, fortement sollicitée chez les athlètes d'endurance. Forme bisglycinate pour une meilleure tolérance digestive.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="spiruline algue vitalité comprimés nutrition">
-      <div class="product-icon">🌊</div>
-      <div class="product-main">
-        <div class="product-name">Spiruline</div>
-        <div class="product-format">Pilulier · 300 comprimés</div>
-        <div class="product-footer">
-          <div class="product-price">14,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Algue hautement nutritive (protéines, fer, phycocyanine) pour la vitalité et l'oxygénation. Particulièrement utile pour les athlètes végétariens ou en phase de récupération post-maladie.</div>
-    </div>
-
-    <div class="product-card" onclick="toggleCard(this)" data-name="probiotiques digestion microbiote intestin Pure Bio">
-      <div class="product-icon">🦠</div>
-      <div class="product-main">
-        <div class="product-name">Probiotiques Pure Bio²</div>
-        <div class="product-format">Pilulier · 60 gélules</div>
-        <div class="product-footer">
-          <div class="product-price">20,94 €</div>
-          <div class="badge badge-amber">TRÈS UTILE</div>
-        </div>
-      </div>
-      <div class="expand-arrow">▾</div>
-      <div class="product-detail">Souches microbiotiques pour sécuriser la digestion mise à l'épreuve lors des compétitions et des voyages. Recommandé en prévention avant un Ironman ou un triathlon hors de chez soi.</div>
-    </div>
-
+  <div id="productList"></div>
+  <div class="empty-state" id="emptyState">
+    <div style="font-size:32px;margin-bottom:8px">🔍</div>
+    Aucun produit trouvé.
   </div>
-
-  <div id="emptyState">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <div>Aucun produit trouvé.<br>Essaie un autre mot-clé.</div>
-  </div>
-
 </div>
 
-<!-- GUIDE USAGE -->
-<div class="section" id="tab-guide">
-
-  <div class="info-banner">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <div>Ces protocoles sont des repères collectifs. Toujours tester un produit à l'entraînement avant une compétition.</div>
+<!-- COMMANDE -->
+<div class="section" id="tab-commande">
+  <div id="orderSuccess" style="display:none">
+    <div class="success-box">
+      <div class="success-ico">✅</div>
+      <div class="success-title">Commande envoyée !</div>
+      <div class="success-sub" id="successMsg"></div>
+    </div>
+    <button class="main-btn secondary" onclick="resetOrder()">Nouvelle commande</button>
   </div>
+  <div id="orderForm">
+    <div class="id-card">
+      <div class="card-title">👤 Tes informations</div>
+      <div class="field" id="f-nom">
+        <label>Prénom &amp; Nom</label>
+        <input type="text" id="inp-nom" placeholder="ex : Sophie Martin">
+        <div class="ferr" id="e-nom"></div>
+      </div>
+      <div class="field" id="f-mail">
+        <label>Email</label>
+        <input type="email" id="inp-mail" placeholder="ex : sophie@mail.com">
+        <div class="ferr" id="e-mail"></div>
+      </div>
+    </div>
+    <div class="id-card">
+      <div class="card-title">🛒 Ta sélection</div>
+      <div id="cartContent"></div>
+    </div>
+    <div class="cart-note">📦 Commande groupée — récupération lors de la prochaine séance ou distribution club.</div>
+    <button class="main-btn" id="submitBtn" onclick="submitOrder()">Envoyer ma commande →</button>
+  </div>
+</div>
+
+<!-- GUIDE -->
+<div class="section" id="tab-guide">
+  <div class="info-box">ℹ️ Protocoles collectifs — toujours tester à l'entraînement avant toute compétition.</div>
 
   <div class="guide-block open">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">🚴</div>
-      <div class="guide-title">Protocoles vélo</div>
-      <div class="guide-arrow">▾</div>
-    </div>
+    <div class="guide-head"><div class="guide-emoji">🚴</div><div class="guide-title-txt">Protocoles vélo</div><div class="guide-arr">▾</div></div>
     <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Vélo court<br>&lt; 1h30</div>
-        <div class="guide-val">Eau + Pure Electrolytes</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Endurance<br>2h à 4h</div>
-        <div class="guide-val">Électrolytes + 60–80g Maltodextrine dans les bidons + Barres Long Distance</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Home-trainer intensif</div>
-        <div class="guide-val">Boisson Endurance + Maltodextrine</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Brick Session</div>
-        <div class="guide-val">1 gel Long Distance + bidon Électrolytes pour l'enchaînement</div>
-      </div>
+      <div class="guide-row"><div class="guide-lbl">Vélo &lt;1h30</div><div class="guide-val">Eau + Pure Electrolytes</div></div>
+      <div class="guide-row"><div class="guide-lbl">Endurance 2–4h</div><div class="guide-val">Électrolytes + 60–80g Maltodextrine en bidon + Barres Long Distance</div></div>
+      <div class="guide-row"><div class="guide-lbl">Home-trainer</div><div class="guide-val">Boisson Endurance + Maltodextrine</div></div>
+      <div class="guide-row"><div class="guide-lbl">Brick Session</div><div class="guide-val">1 gel Long Distance + bidon Électrolytes</div></div>
     </div>
   </div>
 
   <div class="guide-block">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">🏃</div>
-      <div class="guide-title">Course à pied longue</div>
-      <div class="guide-arrow">▾</div>
-    </div>
+    <div class="guide-head"><div class="guide-emoji">🏃</div><div class="guide-title-txt">Course à pied longue</div><div class="guide-arr">▾</div></div>
     <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Hydratation</div>
-        <div class="guide-val">Électrolytes tout au long de l'effort</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Énergie</div>
-        <div class="guide-val">1 gel toutes les 30–45 min, jusqu'à 2/heure maximum</div>
-      </div>
+      <div class="guide-row"><div class="guide-lbl">Hydratation</div><div class="guide-val">Électrolytes tout au long de l'effort</div></div>
+      <div class="guide-row"><div class="guide-lbl">Énergie</div><div class="guide-val">1 gel toutes les 30–45 min, jusqu'à 2/heure</div></div>
     </div>
   </div>
 
   <div class="guide-block">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">⚡</div>
-      <div class="guide-title">Récupération post-effort</div>
-      <div class="guide-arrow">▾</div>
-    </div>
+    <div class="guide-head"><div class="guide-emoji">⚡</div><div class="guide-title-txt">Récupération post-effort</div><div class="guide-arr">▾</div></div>
     <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Dans les 30 min</div>
-        <div class="guide-val">Recovery Drink OU shaker Whey Native + glucides rapides</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Soirée</div>
-        <div class="guide-val">Magnésium Taurine B6 + Caséine avant le coucher</div>
-      </div>
+      <div class="guide-row"><div class="guide-lbl">Dans les 30 min</div><div class="guide-val">Recovery Drink OU shaker Whey + glucides rapides</div></div>
+      <div class="guide-row"><div class="guide-lbl">Soirée</div><div class="guide-val">Magnésium Taurine B6 + Caséine avant le coucher</div></div>
     </div>
   </div>
 
   <div class="guide-block">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">🏁</div>
-      <div class="guide-title">Fenêtre Ironman / Long Distance</div>
-      <div class="guide-arrow">▾</div>
-    </div>
+    <div class="guide-head"><div class="guide-emoji">🏁</div><div class="guide-title-txt">Fenêtre Ironman / Long Distance</div><div class="guide-arr">▾</div></div>
     <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Pendant l'effort</div>
-        <div class="guide-val">Électrolytes + Gels Long Distance + Barres + Maltodextrine en bidon</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Quotidien</div>
-        <div class="guide-val">Collagène le matin + Oméga-3 au repas + Magnésium le soir</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Veille de course</div>
-        <div class="guide-val">Pancakes protéinés au petit-dèj + probiotiques si déplacement</div>
-      </div>
+      <div class="guide-row"><div class="guide-lbl">Pendant l'effort</div><div class="guide-val">Électrolytes + Gels + Barres + Maltodextrine en bidon</div></div>
+      <div class="guide-row"><div class="guide-lbl">Quotidien</div><div class="guide-val">Collagène le matin + Oméga-3 au repas + Magnésium le soir</div></div>
+      <div class="guide-row"><div class="guide-lbl">Veille course</div><div class="guide-val">Pancakes protéinés + Probiotiques si déplacement</div></div>
     </div>
   </div>
 
   <div class="guide-block">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">☀️</div>
-      <div class="guide-title">Routine santé annuelle</div>
-      <div class="guide-arrow">▾</div>
-    </div>
+    <div class="guide-head"><div class="guide-emoji">☀️</div><div class="guide-title-txt">Routine santé annuelle</div><div class="guide-arr">▾</div></div>
     <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Oct → Fév</div>
-        <div class="guide-val">Vitamine D3K2 + Zinc + Multivitamines (immunité hivernale)</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Toute l'année</div>
-        <div class="guide-val">Oméga-3 + Collagène (base prévention blessures)</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Périodes chargées</div>
-        <div class="guide-val">Ashwagandha ou Rhodiola pour la résistance au stress</div>
-      </div>
+      <div class="guide-row"><div class="guide-lbl">Oct → Fév</div><div class="guide-val">Vitamine D3K2 + Zinc + Multivitamines</div></div>
+      <div class="guide-row"><div class="guide-lbl">Toute l'année</div><div class="guide-val">Oméga-3 + Collagène (prévention blessures)</div></div>
+      <div class="guide-row"><div class="guide-lbl">Périodes chargées</div><div class="guide-val">Ashwagandha ou Rhodiola contre le stress</div></div>
     </div>
   </div>
-
 </div>
 
 <!-- PRIORITES -->
 <div class="section" id="tab-priorites">
+  <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:14px;">Guide pour prioriser tes commandes selon ton niveau et ta pratique.</div>
 
-  <div style="margin-bottom: 20px;">
-    <div style="font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 16px;">
-      Un guide pour prioriser tes commandes selon ton niveau et ta pratique.
-    </div>
-
-    <div class="priority-group">
-      <div class="priority-label">
-        <div class="priority-dot dot-green"></div>
-        <div>
-          <div class="priority-name">🟢 Indispensable — utile pour tous</div>
-          <div class="priority-desc">Bases communes à tous les triathlètes du club</div>
-        </div>
-      </div>
-      <div class="priority-tags">
-        <div class="ptag">Électrolytes</div>
-        <div class="ptag">Maltodextrine Bio</div>
-        <div class="ptag">Gels Long Distance</div>
-        <div class="ptag">Whey Native</div>
-        <div class="ptag">Collagène</div>
-        <div class="ptag">Barres Énergétiques</div>
-      </div>
-    </div>
-
-    <div class="priority-group">
-      <div class="priority-label">
-        <div class="priority-dot dot-amber"></div>
-        <div>
-          <div class="priority-name">🟠 Très utile — selon volume</div>
-          <div class="priority-desc">Recommandé dès 8h+ d'entraînement par semaine</div>
-        </div>
-      </div>
-      <div class="priority-tags">
-        <div class="ptag">Magnésium</div>
-        <div class="ptag">Oméga-3 EPAX</div>
-        <div class="ptag">Recovery Drink</div>
-        <div class="ptag">Caséine</div>
-        <div class="ptag">Vitamine D3K2</div>
-        <div class="ptag">Curcumine</div>
-      </div>
-    </div>
-
-    <div class="priority-group">
-      <div class="priority-label">
-        <div class="priority-dot dot-gray"></div>
-        <div>
-          <div class="priority-name">⚪ Optionnel — besoins spécifiques</div>
-          <div class="priority-desc">Pour aller plus loin ou cibler un besoin précis</div>
-        </div>
-      </div>
-      <div class="priority-tags">
-        <div class="ptag">Créatine</div>
-        <div class="ptag">Ashwagandha</div>
-        <div class="ptag">Rhodiola</div>
-        <div class="ptag">Caféine</div>
-        <div class="ptag">PeptoPro</div>
-      </div>
-    </div>
-
-    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 8px;">
-      <div style="font-size: 13px; font-weight: 600; margin-bottom: 10px;">💡 Par où commencer ?</div>
-      <div style="font-size: 13px; color: var(--mid); line-height: 1.6;">
-        Si tu démarres la supplémentation : commence par <strong>Électrolytes + Maltodextrine + Whey</strong>. Ces 3 produits couvrent l'énergie sur l'effort et la récupération musculaire pour moins de 50 €.
-        <br><br>
-        Ajoute ensuite <strong>Collagène + Oméga-3 + Magnésium</strong> pour la prévention à long terme.
-      </div>
-    </div>
+  <div class="priority-group">
+    <div class="priority-label"><div class="p-dot dot-g"></div><div><div class="p-name">🟢 Indispensable — utile pour tous</div><div class="p-desc">Bases communes à tous les triathlètes</div></div></div>
+    <div class="ptags"><div class="ptag">Électrolytes</div><div class="ptag">Maltodextrine Bio</div><div class="ptag">Gels Long Distance</div><div class="ptag">Whey Native</div><div class="ptag">Collagène</div><div class="ptag">Barres Énergétiques</div></div>
   </div>
 
+  <div class="priority-group">
+    <div class="priority-label"><div class="p-dot dot-a"></div><div><div class="p-name">🟠 Très utile — selon volume</div><div class="p-desc">Recommandé dès 8h+ d'entraînement/semaine</div></div></div>
+    <div class="ptags"><div class="ptag">Magnésium</div><div class="ptag">Oméga-3 EPAX</div><div class="ptag">Recovery Drink</div><div class="ptag">Caséine</div><div class="ptag">Vitamine D3K2</div><div class="ptag">Curcumine</div></div>
+  </div>
+
+  <div class="priority-group">
+    <div class="priority-label"><div class="p-dot dot-gr"></div><div><div class="p-name">⚪ Optionnel — besoins spécifiques</div><div class="p-desc">Pour aller plus loin ou cibler un besoin précis</div></div></div>
+    <div class="ptags"><div class="ptag">Créatine</div><div class="ptag">Ashwagandha</div><div class="ptag">Rhodiola</div><div class="ptag">Caféine</div><div class="ptag">PeptoPro</div></div>
+  </div>
+
+  <div class="tip-box">
+    <div style="font-size:13px;font-weight:600;margin-bottom:8px;">💡 Par où commencer ?</div>
+    <div style="font-size:12px;color:var(--mid);line-height:1.6;">Commence par <strong>Électrolytes + Maltodextrine + Whey</strong> pour moins de 50 €. Ajoute ensuite <strong>Collagène + Oméga-3 + Magnésium</strong> pour la prévention long terme.</div>
+  </div>
 </div>
 
-<!-- RÈGLES D'OR -->
+<!-- RÈGLES -->
 <div class="section" id="tab-regles">
-
-  <div class="rule-card">
-    <div class="rule-num">1</div>
-    <div>
-      <div class="rule-title">Toujours tester à l'entraînement</div>
-      <div class="rule-body">Ne jamais utiliser un produit pour la première fois en compétition. Chaque produit doit être testé lors d'une sortie longue ou d'une session brick pour vérifier la tolérance digestive personnelle.</div>
-    </div>
-  </div>
-
-  <div class="rule-card">
-    <div class="rule-num">2</div>
-    <div>
-      <div class="rule-title">L'hydratation avant tout</div>
-      <div class="rule-body">C'est le paramètre de performance n°1 sur toutes les épreuves d'endurance. Une déshydratation de 2% de la masse corporelle dégrade les capacités de 10 à 20%. Électrolytes &gt; eau pure sur les efforts de +1h.</div>
-    </div>
-  </div>
-
-  <div class="rule-card">
-    <div class="rule-num">3</div>
-    <div>
-      <div class="rule-title">Les compléments ne remplacent pas l'assiette</div>
-      <div class="rule-body">La supplémentation optimise une routine alimentaire équilibrée, elle ne la remplace pas. Privilégie d'abord une alimentation variée, riche en aliments peu transformés.</div>
-    </div>
-  </div>
-
-  <div class="rule-card">
-    <div class="rule-num">4</div>
-    <div>
-      <div class="rule-title">Le sommeil est le vrai récupérateur</div>
-      <div class="rule-body">Aucune whey ni récupération ne compense un manque chronique de sommeil. Caséine le soir et magnésium avant le coucher sont des alliés du sommeil, pas des substituts.</div>
-    </div>
-  </div>
-
-  <div class="rule-card">
-    <div class="rule-num">5</div>
-    <div>
-      <div class="rule-title">La régularité > les piques</div>
-      <div class="rule-body">La plupart des compléments (collagène, oméga-3, magnésium) nécessitent une cure de 6 à 12 semaines pour produire leurs effets. Mieux vaut prendre tous les jours une dose modérée que des cures intensives ponctuelles.</div>
-    </div>
-  </div>
-
+  <div class="rule-card"><div class="rule-num">1</div><div><div class="rule-title">Toujours tester à l'entraînement</div><div class="rule-body">Ne jamais utiliser un produit pour la première fois en compétition. Tester lors d'une sortie longue ou d'un brick pour vérifier la tolérance digestive.</div></div></div>
+  <div class="rule-card"><div class="rule-num">2</div><div><div class="rule-title">L'hydratation avant tout</div><div class="rule-body">Paramètre de performance n°1. Une déshydratation de 2% dégrade les capacités de 10–20%. Électrolytes &gt; eau pure sur les efforts +1h.</div></div></div>
+  <div class="rule-card"><div class="rule-num">3</div><div><div class="rule-title">Les compléments ne remplacent pas l'assiette</div><div class="rule-body">La supplémentation optimise une alimentation équilibrée, elle ne la remplace pas.</div></div></div>
+  <div class="rule-card"><div class="rule-num">4</div><div><div class="rule-title">Le sommeil est le vrai récupérateur</div><div class="rule-body">Aucune whey ne compense un manque chronique de sommeil. Caséine et magnésium le soir sont des alliés, pas des substituts.</div></div></div>
+  <div class="rule-card"><div class="rule-num">5</div><div><div class="rule-title">La régularité prime sur les piques</div><div class="rule-body">Collagène, oméga-3, magnésium nécessitent 6–12 semaines. Une dose modérée quotidienne vaut mieux que des cures ponctuelles.</div></div></div>
 </div>
 
-<!-- COMMANDER -->
-<div class="section" id="tab-commande">
-
-  <div class="cta-box">
-    <h3>Comment commander ?</h3>
-    <p>Les tarifs club sont réservés aux licenciés USF Triathlon. Les commandes sont groupées pour bénéficier des meilleures conditions.</p>
-    <ul class="step-list">
-      <li><div class="step-n">1</div><div>Consulte le catalogue et note les produits qui t'intéressent</div></li>
-      <li><div class="step-n">2</div><div>Envoie ta liste au responsable nutrition du club</div></li>
-      <li><div class="step-n">3</div><div>La commande groupée est passée — délai de réception ~5 jours</div></li>
-      <li><div class="step-n">4</div><div>Récupération des produits lors de la prochaine séance</div></li>
-    </ul>
-  </div>
-
-  <div class="guide-block open">
-    <div class="guide-header" onclick="toggleGuide(this)">
-      <div class="guide-emoji">❓</div>
-      <div class="guide-title">Questions fréquentes</div>
-      <div class="guide-arrow">▾</div>
+<!-- ADMIN -->
+<div class="section" id="tab-admin">
+  <div class="admin-gate" id="adminGate">
+    <div class="card-title">🔐 Espace responsable</div>
+    <div class="field">
+      <label>Mot de passe club</label>
+      <input type="password" id="inp-pwd" placeholder="••••••••">
+      <div class="ferr" id="e-pwd"></div>
     </div>
-    <div class="guide-body">
-      <div class="guide-row">
-        <div class="guide-label">Livraison individuelle ?</div>
-        <div class="guide-val">Non, les commandes sont groupées pour obtenir les tarifs club. Commandes individuelles sur nutripure.fr au tarif public.</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Anti-dopage ?</div>
-        <div class="guide-val">Nutripure est certifiée AFNOR Sport. Les produits sont testés et compatibles avec la pratique compétitive. Vérifier malgré tout les composants si tu es soumis à des contrôles fréquents.</div>
-      </div>
-      <div class="guide-row">
-        <div class="guide-label">Minimum de commande ?</div>
-        <div class="guide-val">Pas de minimum. Même un seul produit peut être inclus dans la commande groupée.</div>
-      </div>
+    <button class="main-btn" style="margin-top:8px" onclick="checkAdmin()">Accéder →</button>
+  </div>
+  <div id="adminPanel" style="display:none">
+    <div class="admin-stats">
+      <div class="stat-card"><div class="stat-num" id="statOrders">0</div><div class="stat-label">Commandes</div></div>
+      <div class="stat-card"><div class="stat-num" id="statTotal">0 €</div><div class="stat-label">Total estimé</div></div>
+    </div>
+    <button class="export-btn" onclick="exportCSV()">📥 Exporter CSV commandes</button>
+    <button class="export-btn" onclick="exportSummary()">📊 Récap produits à commander</button>
+    <div id="ordersList"></div>
+    <div class="empty-state" id="adminEmpty" style="display:none">
+      <div style="font-size:30px;margin-bottom:8px">📭</div>Aucune commande pour l'instant.
     </div>
   </div>
-
-  <div style="background: var(--orange-light); border: 1px solid #F4C3A8; border-radius: 10px; padding: 14px; margin-top: 12px;">
-    <div style="font-size: 13px; font-weight: 600; color: var(--orange); margin-bottom: 6px;">📌 Contact</div>
-    <div style="font-size: 13px; color: #7A3010; line-height: 1.6;">Pour toute question sur le catalogue ou pour passer commande, contacter le responsable nutrition du club sur le groupe WhatsApp du club ou lors des entraînements.</div>
-  </div>
-
 </div>
 
-<div style="height: 32px;"></div>
+<div style="height:30px"></div>
 
 <script>
-function showTab(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.target.classList.add('active');
-}
+// ============= PRODUITS =============
+// Prix = prix public × 0.60 (remise club 40%)
+function p(pub) { return Math.round(pub * 0.60 * 100) / 100; }
 
-function toggleCard(card) {
-  const wasExpanded = card.classList.contains('expanded');
-  document.querySelectorAll('.product-card.expanded').forEach(c => c.classList.remove('expanded'));
-  if (!wasExpanded) card.classList.add('expanded');
-}
+var PRODUCTS = [
+  // ── PACKS TRIATHLON ────────────────────────────────────────────────
+  {id:'pk1',cat:'⭐ Packs Triathlon',icon:'🏅',name:'Pack Endurance Complet',format:'12 gels + 12 sachets boisson + 6 barres + 15 doses Recovery',price:p(89.90),priority:'green',
+   detail:'Le pack clé en main Nutripure pour triathlon et longue distance. Contient : Gel Long Distance ×12, Boisson Énergétique Long Distance ×12 sachets, Barre Énergétique ×6, Long Distance Recovery ×15 doses. Tout le nécessaire pour l\'effort et la récupération immédiate.'},
+  {id:'pk2',cat:'⭐ Packs Triathlon',icon:'🏃',name:'Pack Découverte Endurance',format:'3 sachets boisson + 1 barre énergétique',price:p(9.90),priority:'green',
+   detail:'Pack entrée idéal pour tester la gamme Long Distance avant de s\'engager sur de plus grandes quantités. Parfait pour un sprint ou une séance longue découverte.'},
+  {id:'pk3',cat:'⭐ Packs Triathlon',icon:'💊',name:'Pack Incontournables Santé',format:'Multivitamines + Magnésium Taurine B6 + Oméga-3 EPAX®',price:p(59.90),priority:'green',
+   detail:'Les 3 fondations santé du sportif d\'endurance en un seul pack : Multivitamines (21 nutriments), Magnésium Taurine B6 (fatigue + sommeil), Oméga-3 EPAX® (inflammation + cardiovasculaire). Cure de fond recommandée toute la saison.'},
+  {id:'pk4',cat:'⭐ Packs Triathlon',icon:'🦴',name:'Pack Mobilité & Articulations',format:'Collagène Peptan + Curcumine Active + Arthropure',price:p(79.90),priority:'amber',
+   detail:'Pack prévention blessures articulaires et tendineuses. Contient Collagène Peptan (tendons), Curcumine Active (inflammation), Arthropure (chondroïtine, glucosamine, MSM, Boswellia). Idéal pour les triathlètes avec historique de tendinites ou en préparation Ironman.'},
+  {id:'pk5',cat:'⭐ Packs Triathlon',icon:'🥤',name:'Pack Boisson Énergétique',format:'Électrolytes + Maltodextrine Bio · Format entraînement',price:p(19.90),priority:'green',
+   detail:'Le duo de base pour construire sa boisson maison : Électrolytes Pure + Maltodextrine Bio. Association optimale pour les sorties vélo et CAP longues. Économique et personnalisable selon l\'intensité.'},
 
-function toggleGuide(header) {
-  const block = header.parentElement;
-  block.classList.toggle('open');
-}
+  // ── HYDRATATION & EFFORT ───────────────────────────────────────────
+  {id:'p01',cat:'Hydratation & Effort',icon:'💧',name:'Pure Electrolytes (Sachets)',format:'Boîte 15 sachets · Goût citron',price:p(14.90),priority:'green',
+   detail:'Sachets unidoses à emporter partout. Sans édulcorants controversés, base citrates. Idéal pour les déplacements et compétitions.'},
+  {id:'p02',cat:'Hydratation & Effort',icon:'💧',name:'Pure Electrolytes Boisson sport',format:'Pot poudre · 300 g',price:p(14.90),priority:'green',
+   detail:'Format économique pour doser ses électrolytes à l\'entraînement. Version sans sucres, idéale pour les entraînements intensifs ou par forte chaleur.'},
+  {id:'p03',cat:'Hydratation & Effort',icon:'⚡',name:'Maltodextrine Bio 1 kg',format:'Sachet poudre · 1 000 g',price:p(15.90),priority:'green',
+   detail:'Recharge glucidique pure bio. 60–80g pour 3h de vélo dans les bidons.'},
+  {id:'p04',cat:'Hydratation & Effort',icon:'⚡',name:'Maltodextrine Grand Format',format:'Sachet poudre · 4 000 g',price:p(44.90),priority:'amber',
+   detail:'Format 4 kg pour tenir toute la saison. Économique pour les athlètes à fort volume.'},
+  {id:'p05',cat:'Hydratation & Effort',icon:'🏃',name:'Gel Long Distance (boîte 12 gels)',format:'Boîte 12 gels · SolidCarbs™ · 30g glucides/gel',price:p(29.90),priority:'green',
+   detail:'30g glucides/gel (ratio 2:1 glucose/fructose). Technologie SolidCarbs™, goût neutre, sans édulcorant. Protocole : 1 gel toutes les 30–45 min, jusqu\'à 2/heure.'},
+  {id:'p06',cat:'Hydratation & Effort',icon:'🏃',name:'Gel Long Distance (boîte 6 gels)',format:'Boîte 6 gels · SolidCarbs™',price:p(16.90),priority:'green',
+   detail:'Format découverte ou appoint. Idéal pour un Half ou une sortie longue. Mêmes caractéristiques que la boîte 12.'},
 
-function filterProducts(query) {
-  const q = query.toLowerCase().trim();
-  const cards = document.querySelectorAll('.product-card');
-  const catHeaders = document.querySelectorAll('.cat-header');
-  let visibleCount = 0;
+  // ── NUTRITION TERRAIN ──────────────────────────────────────────────
+  {id:'p09',cat:'Nutrition Terrain & Collations',icon:'🍫',name:'Barres Énergétiques Long Distance',format:'Boîte · 6 barres · ~30g glucides/barre',price:p(12.50),priority:'green',
+   detail:'70% fruits, texture moelleuse, vitamines C, B1, B2. Compatible stratégie gel + barre sur longue distance. 1 barre toutes les 45 min à 1h.'},
+  {id:'p10',cat:'Nutrition Terrain & Collations',icon:'🌿',name:'Raw Barre Bio',format:'Boîte · 6 barres · 40 g/barre',price:p(12.50),priority:'amber',
+   detail:'Barres crues biologiques, ~9g de protéines/barre, sans sucres ajoutés ni conservateurs. Collation saine avant/après effort ou au quotidien. Plusieurs saveurs.'},
+  {id:'p11',cat:'Nutrition Terrain & Collations',icon:'🌾',name:'Pure Porridge Bio',format:'Sachet poudre · 500 g',price:p(19.90),priority:'amber',
+   detail:'Porridge avoine bio + whey. Petit-déjeuner protéiné et digeste, parfait les matins d\'entraînement ou de compétition. Plusieurs saveurs disponibles.'},
+  {id:'p12',cat:'Nutrition Terrain & Collations',icon:'🥣',name:'Pure Granola Protéiné',format:'Sachet · 400 g',price:p(19.90),priority:'amber',
+   detail:'Céréales croustillantes enrichies en protéines. Idéal au petit-déjeuner des semaines de gros volume.'},
+  {id:'p13',cat:'Nutrition Terrain & Collations',icon:'🥜',name:'Purée d\'Amandes',format:'Pot verre · 500 g',price:p(19.90),priority:'amber',
+   detail:'Oléagineux pur pour un apport en bons lipides durant les grosses semaines.'},
+  {id:'p14',cat:'Nutrition Terrain & Collations',icon:'🥜',name:'Beurre de Cacahuète',format:'Pot verre · 500 g',price:p(12.90),priority:'amber',
+   detail:'Source calorique saine et économique. Idéal pour la recharge calorique à fort volume.'},
 
-  catHeaders.forEach(h => h.style.display = q ? 'none' : '');
+  // ── RÉCUPÉRATION ──────────────────────────────────────────────────
+  {id:'p15',cat:'Récupération Musculaire',icon:'🍫',name:'Whey Chocolat',format:'Pot poudre · 750 g',price:p(39.90),priority:'green',
+   detail:'Protéine native aromatisée chocolat. À consommer dans les 30 min post-effort pour maximiser la synthèse protéique.'},
+  {id:'p16',cat:'Récupération Musculaire',icon:'💪',name:'Whey Isolate Native',format:'Pot poudre · 750 g',price:p(44.90),priority:'green',
+   detail:'Isolat sans lécithine, 94% protéines, assimilation ultra-rapide. Idéal pour les sensibles aux additifs.'},
+  {id:'p17',cat:'Récupération Musculaire',icon:'🥤',name:'Long Distance Recovery',format:'Doypack poudre · 825 g · 15 doses',price:p(34.90),priority:'green',
+   detail:'Formule complète post-effort 5 en 1 : 15g protéines whey + 30g glucides + 5g collagène Solugel® + 5g glutamine + électrolytes + vitamines. Conçue spécifiquement pour l\'endurance longue distance.'},
+  {id:'p18',cat:'Récupération Musculaire',icon:'⚗️',name:'Créatine Poudre',format:'Pot poudre · 150 g · Creapure®',price:p(14.90),priority:'gray',
+   detail:'Creapure® 100% pure, goût neutre. Utile en préparation hivernale ou musculation complémentaire.'},
+  {id:'p19',cat:'Récupération Musculaire',icon:'💊',name:'Créatine Gélules',format:'Pilulier · 150 gélules · Creapure®',price:p(19.90),priority:'gray',
+   detail:'Format pratique pour les déplacements. Même efficacité que la poudre.'},
+  {id:'p20',cat:'Récupération Musculaire',icon:'🌙',name:'Caséine Micellaire',format:'Pot poudre · 750 g',price:p(34.90),priority:'amber',
+   detail:'Protéine lente à consommer le soir. Maintient la synthèse protéique pendant la nuit.'},
+  {id:'p21',cat:'Récupération Musculaire',icon:'🔬',name:'PeptoPro',format:'Pot poudre · 250 g',price:p(39.90),priority:'gray',
+   detail:'Hydrolysat de caséine haut de gamme, assimilation ultra-rapide. Idéal pendant les blocs d\'entraînement consécutifs.'},
 
-  cards.forEach(card => {
-    const name = card.dataset.name || '';
-    const matches = !q || name.includes(q);
-    card.style.display = matches ? '' : 'none';
-    if (matches) visibleCount++;
+  // ── TENDONS & PRÉVENTION ──────────────────────────────────────────
+  {id:'p22',cat:'Tendons & Prévention',icon:'🦴',name:'Collagène Peptan 4 kg',format:'Seau poudre · 4 000 g',price:p(139.90),priority:'green',
+   detail:'Format économique saisonnier. Peptan® breveté, à prendre le matin à jeun ou avant l\'entraînement.'},
+  {id:'p23',cat:'Tendons & Prévention',icon:'🍫',name:'Collagène Peptan Chocolat',format:'Pot poudre · 300 g',price:p(37.90),priority:'green',
+   detail:'Peptan® aromatisé chocolat pour faciliter la routine matinale. Même efficacité que la version neutre.'},
+  {id:'p24',cat:'Tendons & Prévention',icon:'🐟',name:'Collagène Marin Sauvage',format:'Pot poudre · 300 g',price:p(37.90),priority:'green',
+   detail:'Source marine sauvage pour les tissus conjonctifs. Alternative au collagène bovin.'},
+  {id:'p25',cat:'Tendons & Prévention',icon:'🌿',name:'Curcumine Active',format:'Pilulier · 60 gélules',price:p(34.90),priority:'amber',
+   detail:'Cyclodextrine brevetée pour une assimilation maximale. Anti-inflammatoire naturel, efficace lors des phases de grosse charge.'},
+  {id:'p26',cat:'Tendons & Prévention',icon:'🌱',name:'Boswellia',format:'Pilulier · 60 gélules',price:p(24.90),priority:'amber',
+   detail:'Synergie avec la curcumine pour un effet anti-inflammatoire naturel renforcé.'},
+  {id:'p27',cat:'Tendons & Prévention',icon:'🔩',name:'MSM',format:'Pilulier · 120 gélules',price:p(19.90),priority:'amber',
+   detail:'Composé soufré pour les tissus conjonctifs. Complémentaire du collagène dans un protocole prévention blessures.'},
+  {id:'p28',cat:'Tendons & Prévention',icon:'🐟',name:'Oméga-3 EPAX®',format:'Pilulier · 120 capsules',price:p(25.90),priority:'amber',
+   detail:'Certifié EPAX®, pêche durable. 420mg EPA + 300mg DHA/capsule. Bénéfices cardiovasculaires, articulaires, cognitifs. Cure annuelle recommandée.'},
+
+  // ── SOMMEIL, FATIGUE & IMMUNITÉ ────────────────────────────────────
+  {id:'p29',cat:'Sommeil, Fatigue & Immunité',icon:'😴',name:'Magnésium Biodisponible',format:'Pilulier · 180 gélules · 3 mois',price:p(39.90),priority:'amber',
+   detail:'Bisglycinate sans effet laxatif. Format économique cure de fond. Idéal en continu toute la saison.'},
+  {id:'p30',cat:'Sommeil, Fatigue & Immunité',icon:'😴',name:'Magnésium Taurine B6',format:'Pilulier · 60 gélules · 1 mois',price:p(16.90),priority:'amber',
+   detail:'Bisglycinate + taurine + B6 en synergie. La taurine améliore l\'absorption du magnésium dans les cellules et a un effet apaisant. Détente musculaire, réduction fatigue nerveuse, qualité du sommeil. Remplace avantageusement la taurine seule.'},
+  {id:'p31',cat:'Sommeil, Fatigue & Immunité',icon:'😴',name:'Magnésium Taurine B6 × 2',format:'Lot 2 piluliers · 120 gélules · 2 mois',price:p(29.90),priority:'amber',
+   detail:'Pack 2 mois pour assurer la continuité. Recommandé lors des gros blocs d\'entraînement ou périodes de compétitions rapprochées.'},
+  {id:'p32',cat:'Sommeil, Fatigue & Immunité',icon:'🌿',name:'Ashwagandha',format:'Pilulier · 60 gélules · KSM-66 Bio',price:p(24.90),priority:'gray',
+   detail:'Adaptogène stress et fatigue physique. Utile en période de surcharge ou compétitions rapprochées.'},
+  {id:'p33',cat:'Sommeil, Fatigue & Immunité',icon:'🌸',name:'Rhodiola',format:'Pilulier · 60 gélules',price:p(24.90),priority:'gray',
+   detail:'Résistance à l\'effort et fatigue mentale. Complémentaire de l\'ashwagandha, à alterner avec des pauses.'},
+  {id:'p34',cat:'Sommeil, Fatigue & Immunité',icon:'☀️',name:'Vitamine D3 K2',format:'Flacon compte-gouttes · 15 ml',price:p(19.90),priority:'amber',
+   detail:'Immunité et santé osseuse. Incontournable automne-hiver pour tous les sportifs d\'endurance.'},
+  {id:'p35',cat:'Sommeil, Fatigue & Immunité',icon:'💊',name:'Multivitamines',format:'Pilulier · 60 gélules · 1 mois',price:p(22.90),priority:'amber',
+   detail:'21 nutriments dont vitamines E et B9 naturelles, D3, CoEnzyme Q10, quercétine. Compense les pertes accrues du sportif d\'endurance.'},
+  {id:'p36',cat:'Sommeil, Fatigue & Immunité',icon:'🛡️',name:'Zinc Bisglycinate',format:'Pilulier · 120 gélules',price:p(14.90),priority:'amber',
+   detail:'Oligo-élément immunité. Forme bisglycinate, bonne tolérance digestive.'},
+  {id:'p37',cat:'Sommeil, Fatigue & Immunité',icon:'🌊',name:'Spiruline',format:'Pilulier · 300 comprimés',price:p(24.90),priority:'amber',
+   detail:'Protéines, fer, phycocyanine. Utile pour les végétariens et en période de récupération post-maladie.'},
+  {id:'p38',cat:'Sommeil, Fatigue & Immunité',icon:'🦠',name:'Probiotiques Pure Bio²',format:'Pilulier · 60 gélules',price:p(34.90),priority:'amber',
+   detail:'Microbiote et digestion. Recommandé avant un Ironman ou déplacement compétition.'}
+];
+
+// ============= ÉTAT =============
+var cart = {};
+var adminUnlocked = false;
+var ADMIN_PWD = 'triclub2024';
+
+// ============= TABS =============
+document.getElementById('navTabs').addEventListener('click', function(e) {
+  var btn = e.target.closest('.tab-btn');
+  if (!btn) return;
+  var tabName = btn.getAttribute('data-tab');
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('tab-' + tabName).classList.add('active');
+  if (tabName === 'commande') renderCartContent();
+  if (tabName === 'admin' && adminUnlocked) loadOrders();
+});
+
+// ============= GUIDE ACCORDION =============
+document.querySelectorAll('.guide-head').forEach(function(head) {
+  head.addEventListener('click', function() {
+    head.parentElement.classList.toggle('open');
   });
+});
 
-  document.getElementById('emptyState').style.display = visibleCount === 0 ? 'block' : 'none';
+// ============= CATALOGUE =============
+function renderCatalogue() {
+  var list = document.getElementById('productList');
+  var html = '';
+  var lastCat = '';
+  var bMap = {green:'badge-green', amber:'badge-amber', gray:'badge-gray'};
+  var lMap = {green:'INDISPENSABLE', amber:'TRÈS UTILE', gray:'OPTIONNEL'};
+  PRODUCTS.forEach(function(p) {
+    if (p.cat !== lastCat) {
+      lastCat = p.cat;
+      html += '<div class="cat-header" data-cat="'+p.cat+'"><div class="cat-dot"></div><div class="cat-title">'+p.cat+'</div></div>';
+    }
+    var inCart = cart[p.id] && cart[p.id] > 0;
+    var qty = inCart ? cart[p.id] : 1;
+    html += '<div class="product-card'+(inCart?' in-cart':'')+'" id="card-'+p.id+'" data-id="'+p.id+'" data-search="'+p.name.toLowerCase()+' '+p.cat.toLowerCase()+' '+p.format.toLowerCase()+'">'
+      + '<div class="product-top">'
+      + '<div class="product-icon">'+p.icon+'</div>'
+      + '<div class="product-main">'
+      + '<div class="product-name">'+p.name+'</div>'
+      + '<div class="product-format">'+p.format+'</div>'
+      + '<div class="product-footer">'
+      + '<div class="product-price">'+fmt(p.price)+'</div>'
+      + '<div class="badge '+bMap[p.priority]+'">'+lMap[p.priority]+'</div>'
+      + '</div>'
+      + '<div class="incart-tag" id="ci-'+p.id+'">'+(inCart?'✓ Dans le panier (×'+qty+')':'✓ Dans le panier')+'</div>'
+      + '</div>'
+      + '<div class="expand-icon">▾</div>'
+      + '</div>'
+      + '<div class="product-detail">'
+      + '<p style="margin-bottom:10px">'+p.detail+'</p>'
+      + '<div class="cart-ctrl" onclick="event.stopPropagation()">'
+      + '<button class="qty-btn" onclick="changeQty(\''+p.id+'\',-1)">−</button>'
+      + '<div class="qty-num" id="qty-'+p.id+'">'+qty+'</div>'
+      + '<button class="qty-btn" onclick="changeQty(\''+p.id+'\',1)">+</button>'
+      + '<button class="add-btn'+(inCart?' added':'')+'" id="abtn-'+p.id+'" onclick="addToCart(\''+p.id+'\')">'+( inCart?'✓ Ajouté':'Ajouter')+'</button>'
+      + '</div>'
+      + '</div>'
+      + '</div>';
+  });
+  list.innerHTML = html;
+
+  // Attach click on cards (delegation)
+  list.addEventListener('click', function(e) {
+    var card = e.target.closest('.product-card');
+    if (!card) return;
+    // Don't expand when clicking buttons inside
+    if (e.target.closest('.cart-ctrl')) return;
+    var id = card.getAttribute('data-id');
+    var wasExp = card.classList.contains('expanded');
+    document.querySelectorAll('.product-card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
+    if (!wasExp) card.classList.add('expanded');
+  });
 }
-</script>
 
+function fmt(n) { return n.toFixed(2).replace('.', ',') + ' €'; }
+
+function changeQty(id, d) {
+  var el = document.getElementById('qty-'+id);
+  var v = parseInt(el.textContent) + d;
+  if (v < 1) v = 1;
+  if (v > 20) v = 20;
+  el.textContent = v;
+}
+
+function addToCart(id) {
+  var qty = parseInt(document.getElementById('qty-'+id).textContent);
+  cart[id] = qty;
+  var card = document.getElementById('card-'+id);
+  card.classList.add('in-cart');
+  var ci = document.getElementById('ci-'+id);
+  if (ci) { ci.textContent = '✓ Dans le panier (×'+qty+')'; }
+  var btn = document.getElementById('abtn-'+id);
+  if (btn) { btn.textContent = '✓ Ajouté'; btn.classList.add('added'); }
+  updateBadge();
+}
+
+function updateBadge() {
+  var count = Object.keys(cart).filter(function(k) { return cart[k] > 0; }).length;
+  var badge = document.getElementById('cartBadge');
+  if (count > 0) { badge.textContent = count; badge.style.display = 'inline-flex'; }
+  else { badge.style.display = 'none'; }
+}
+
+// ============= SEARCH =============
+document.getElementById('searchInput').addEventListener('input', function() {
+  var q = this.value.toLowerCase().trim();
+  var vis = 0;
+  document.querySelectorAll('.product-card').forEach(function(card) {
+    var m = !q || card.getAttribute('data-search').indexOf(q) >= 0;
+    card.style.display = m ? '' : 'none';
+    if (m) vis++;
+  });
+  document.querySelectorAll('.cat-header').forEach(function(h) { h.style.display = q ? 'none' : ''; });
+  document.getElementById('emptyState').style.display = vis === 0 ? 'block' : 'none';
+});
+
+// ============= PANIER =============
+function renderCartContent() {
+  var el = document.getElementById('cartContent');
+  var items = Object.keys(cart).filter(function(k) { return cart[k] > 0; });
+  if (items.length === 0) {
+    el.innerHTML = '<div class="cart-empty"><div style="font-size:32px;margin-bottom:8px">🛒</div>Ton panier est vide.<br>Ajoute des produits depuis le catalogue.</div>';
+    document.getElementById('submitBtn').disabled = true;
+    return;
+  }
+  document.getElementById('submitBtn').disabled = false;
+  var total = 0;
+  var html = '';
+  items.forEach(function(id) {
+    var p = PRODUCTS.find(function(x) { return x.id === id; });
+    if (!p) return;
+    var sub = Math.round(p.price * cart[id] * 100) / 100;
+    total += sub;
+    html += '<div class="cart-row">'
+      + '<div class="cart-ico">'+p.icon+'</div>'
+      + '<div class="cart-info"><div class="cart-name">'+p.name+'</div><div class="cart-fmt">'+p.format+'</div></div>'
+      + '<div class="cqty-ctrl">'
+      + '<button class="cqty-btn" onclick="cqtyChange(\''+id+'\',-1)">−</button>'
+      + '<div class="cqty-val" id="cqty-'+id+'">'+cart[id]+'</div>'
+      + '<button class="cqty-btn" onclick="cqtyChange(\''+id+'\',1)">+</button>'
+      + '</div>'
+      + '<div class="cart-price">'+fmt(sub)+'</div>'
+      + '</div>';
+  });
+  total = Math.round(total * 100) / 100;
+  html += '<div class="cart-total"><div>Total estimé</div><div class="cart-total-price">'+fmt(total)+'</div></div>';
+  el.innerHTML = html;
+}
+
+function cqtyChange(id, d) {
+  if (!cart[id]) return;
+  cart[id] = Math.max(0, cart[id] + d);
+  if (cart[id] === 0) {
+    delete cart[id];
+    var card = document.getElementById('card-'+id);
+    if (card) {
+      card.classList.remove('in-cart');
+      var btn = document.getElementById('abtn-'+id);
+      if (btn) { btn.textContent = 'Ajouter'; btn.classList.remove('added'); }
+      var ci = document.getElementById('ci-'+id);
+      if (ci) ci.textContent = '';
+    }
+  }
+  updateBadge();
+  renderCartContent();
+}
+
+// ============= SUBMIT =============
+async function submitOrder() {
+  var nom = document.getElementById('inp-nom').value.trim();
+  var mail = document.getElementById('inp-mail').value.trim();
+  var ok = true;
+  if (!nom) { setErr('f-nom','e-nom','Merci d\'indiquer ton nom'); ok=false; }
+  if (!mail || mail.indexOf('@') < 0) { setErr('f-mail','e-mail','Adresse email invalide'); ok=false; }
+  if (!ok) return;
+  var items = Object.keys(cart).filter(function(k) { return cart[k] > 0; });
+  if (items.length === 0) { alert('Ton panier est vide !'); return; }
+
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Envoi en cours...';
+
+  var products = items.map(function(id) {
+    var p = PRODUCTS.find(function(x) { return x.id === id; });
+    return {id:id, name:p.name, format:p.format, qty:cart[id], unitPrice:p.price, total:Math.round(p.price*cart[id]*100)/100};
+  });
+  var grandTotal = Math.round(products.reduce(function(s,x){return s+x.total;},0)*100)/100;
+  var now = new Date();
+  var order = {
+    id:'cmd-'+Date.now(),
+    nom:nom, mail:mail,
+    date:now.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric'})+' '+now.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),
+    products:products, grandTotal:grandTotal, status:'pending'
+  };
+
+  try {
+    await window.storage.set('order:'+order.id, JSON.stringify(order), true);
+    document.getElementById('orderForm').style.display = 'none';
+    document.getElementById('orderSuccess').style.display = 'block';
+    document.getElementById('successMsg').innerHTML = 'Merci <strong>'+nom+'</strong> !<br>Commande de <strong>'+fmt(grandTotal)+'</strong> bien transmise.<br>Tu seras contacté(e) pour la distribution.';
+    cart = {};
+    updateBadge();
+    renderCatalogue();
+  } catch(e) {
+    btn.disabled = false; btn.textContent = 'Envoyer ma commande →';
+    alert('Erreur enregistrement. Réessaie.');
+  }
+}
+
+function resetOrder() {
+  document.getElementById('orderForm').style.display = 'block';
+  document.getElementById('orderSuccess').style.display = 'none';
+  document.getElementById('inp-nom').value = '';
+  document.getElementById('inp-mail').value = '';
+  document.getElementById('submitBtn').disabled = false;
+  document.getElementById('submitBtn').textContent = 'Envoyer ma commande →';
+  renderCartContent();
+}
+
+// ============= ADMIN =============
+document.getElementById('inp-pwd').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkAdmin();
+});
+
+function checkAdmin() {
+  if (document.getElementById('inp-pwd').value === ADMIN_PWD) {
+    adminUnlocked = true;
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    loadOrders();
+  } else {
+    document.getElementById('e-pwd').textContent = 'Mot de passe incorrect.';
+  }
+}
+
+async function loadOrders() {
+  try {
+    var keysResult = await window.storage.list('order:', true);
+    var keys = keysResult ? keysResult.keys : [];
+    if (keys.length === 0) {
+      document.getElementById('adminEmpty').style.display = 'block';
+      document.getElementById('ordersList').innerHTML = '';
+      document.getElementById('statOrders').textContent = '0';
+      document.getElementById('statTotal').textContent = '0 €';
+      return;
+    }
+    var orders = [];
+    for (var i = 0; i < keys.length; i++) {
+      try { var r = await window.storage.get(keys[i], true); if (r) orders.push(JSON.parse(r.value)); } catch(e){}
+    }
+    orders.sort(function(a,b) { return b.id.localeCompare(a.id); });
+    var total = orders.reduce(function(s,o){return s+o.grandTotal;},0);
+    document.getElementById('statOrders').textContent = orders.length;
+    document.getElementById('statTotal').textContent = Math.round(total*100)/100 + ' €';
+    renderOrders(orders);
+  } catch(e) {
+    document.getElementById('adminEmpty').style.display = 'block';
+  }
+}
+
+function renderOrders(orders) {
+  var el = document.getElementById('ordersList');
+  if (orders.length === 0) { document.getElementById('adminEmpty').style.display='block'; el.innerHTML=''; return; }
+  document.getElementById('adminEmpty').style.display = 'none';
+  var html = '';
+  orders.forEach(function(o) {
+    var ini = o.nom.split(' ').map(function(w){return w[0]||'';}).join('').substring(0,2).toUpperCase();
+    var done = o.status === 'done';
+    var prods = o.products.map(function(p) {
+      return '<div class="order-prod"><div class="order-prod-n">'+p.name+'</div><div class="order-prod-q">×'+p.qty+'</div><div class="order-prod-p">'+fmt(p.total)+'</div></div>';
+    }).join('');
+    html += '<div class="order-card" id="oc-'+o.id+'">'
+      + '<div class="order-head" onclick="toggleOrder(\''+o.id+'\')">'
+      + '<div class="order-avatar">'+ini+'</div>'
+      + '<div class="order-meta"><div class="order-name">'+o.nom+'</div><div class="order-info">'+o.mail+' · '+o.date+'</div></div>'
+      + '<div class="order-right"><div class="order-total">'+fmt(o.grandTotal)+'</div>'
+      + '<div class="order-status"><div class="sdot '+(done?'sdot-d':'sdot-p')+'"></div>'+(done?'Remis':'En attente')+'</div></div>'
+      + '</div>'
+      + '<div class="order-body">'
+      + prods
+      + '<div style="display:flex;justify-content:flex-end;padding-top:7px;font-weight:700;font-size:12px;">Total : '+fmt(o.grandTotal)+'</div>'
+      + '<div class="order-acts">'
+      + '<button class="act-btn act-done" onclick="markDone(\''+o.id+'\')">'+(done?'✓ Remis':'Marquer remis')+'</button>'
+      + '<button class="act-btn act-del" onclick="delOrder(\''+o.id+'\')">Supprimer</button>'
+      + '</div></div></div>';
+  });
+  el.innerHTML = html;
+}
+
+function toggleOrder(id) {
+  var c = document.getElementById('oc-'+id);
+  if (c) c.classList.toggle('open');
+}
+
+async function markDone(id) {
+  try {
+    var r = await window.storage.get('order:'+id, true);
+    if (!r) return;
+    var o = JSON.parse(r.value);
+    o.status = o.status === 'done' ? 'pending' : 'done';
+    await window.storage.set('order:'+id, JSON.stringify(o), true);
+    loadOrders();
+  } catch(e){}
+}
+
+async function delOrder(id) {
+  if (!confirm('Supprimer cette commande ?')) return;
+  try { await window.storage.delete('order:'+id, true); loadOrders(); } catch(e){}
+}
+
+async function exportCSV() {
+  try {
+    var kr = await window.storage.list('order:', true);
+    var keys = kr ? kr.keys : [];
+    if (!keys.length) { alert('Aucune commande.'); return; }
+    var orders = [];
+    for (var i=0;i<keys.length;i++){try{var r=await window.storage.get(keys[i],true);if(r)orders.push(JSON.parse(r.value));}catch(e){}}
+    var csv = 'Date;Nom;Email;Produit;Format;Qte;Prix unit.;Sous-total;Statut\n';
+    orders.forEach(function(o){o.products.forEach(function(p){
+      csv+=o.date+';'+o.nom+';'+o.mail+';"'+p.name+'";"'+p.format+'";'+p.qty+';'+p.unitPrice.toFixed(2)+';'+p.total.toFixed(2)+';'+(o.status==='done'?'Remis':'En attente')+'\n';
+    });});
+    dlFile(csv,'commandes-nutripure.csv','text/csv;charset=utf-8;');
+  } catch(e){alert('Erreur export.');}
+}
+
+async function exportSummary() {
+  try {
+    var kr = await window.storage.list('order:', true);
+    var keys = kr ? kr.keys : [];
+    if (!keys.length) { alert('Aucune commande.'); return; }
+    var orders = [];
+    for (var i=0;i<keys.length;i++){try{var r=await window.storage.get(keys[i],true);if(r)orders.push(JSON.parse(r.value));}catch(e){}}
+    var s={};
+    orders.forEach(function(o){o.products.forEach(function(p){if(!s[p.name])s[p.name]={name:p.name,format:p.format,qty:0,total:0};s[p.name].qty+=p.qty;s[p.name].total+=p.total;});});
+    var csv='Produit;Format;Qte totale;Total\n';
+    Object.values(s).sort(function(a,b){return b.qty-a.qty;}).forEach(function(x){csv+='"'+x.name+'";"'+x.format+'";'+x.qty+';'+x.total.toFixed(2)+'\n';});
+    dlFile(csv,'recap-produits.csv','text/csv;charset=utf-8;');
+  } catch(e){alert('Erreur export.');}
+}
+
+function dlFile(content, name, mime) {
+  var blob = new Blob(['\uFEFF'+content], {type:mime});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href=url; a.download=name;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+function setErr(fid, eid, msg) {
+  document.getElementById(fid).classList.add('err');
+  document.getElementById(eid).textContent = msg;
+}
+
+document.getElementById('inp-nom').addEventListener('input', function(){document.getElementById('f-nom').classList.remove('err');document.getElementById('e-nom').textContent='';});
+document.getElementById('inp-mail').addEventListener('input', function(){document.getElementById('f-mail').classList.remove('err');document.getElementById('e-mail').textContent='';});
+
+// ============= INIT =============
+renderCatalogue();
+renderCartContent();
+</script>
 </body>
 </html>
